@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rayvafa/PokePokePokePoke.git"
+    "url": "git+https://github.com/rayvafa/poke-poke-poke-poke.git"
   },
   "author": "Raymond Vafa <raymond.vafa@gmail.com> (http://rayvafa.me)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rayvafa/PokePokePokePoke/issues"
+    "url": "https://github.com/rayvafa/poke-poke-poke-poke/issues"
   },
-  "homepage": "https://github.com/rayvafa/PokePokePokePoke#readme"
+  "homepage": "https://github.com/rayvafa/poke-poke-poke-poke#readme"
 }
