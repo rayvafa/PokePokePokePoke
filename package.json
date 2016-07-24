@@ -2,7 +2,7 @@
   "name": "poke-poke-poke-poke",
   "version": "1.0.0",
   "description": "Poke",
-  "main": "index.js",
+  "main": "/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rayvafa/poke-poke-poke-poke/issues"
   },
-  "homepage": "https://github.com/rayvafa/poke-poke-poke-poke#readme"
+  "homepage": "https://github.com/rayvafa/poke-poke-poke-poke#readme",
+  "dependencies": {
+    "pokemon-go-node-api": "git+https://git@github.com/rayvafa/Pokemon-GO-node-api.git"
+  }
 }
