@@ -10,4 +10,4 @@
 
 
 You are all set!
-You can execute the project by running 'node ./index.js'
+You can execute the project by running 'node ./src/index.js'
