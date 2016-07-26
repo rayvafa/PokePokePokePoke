@@ -3,7 +3,6 @@
 function catchPokemon(Pokeio, pokemon, pokemonName) {
 	console.log('');
 	// this is because a type in API field name
-	pokemon.SpawnpointId = pokemon.SpawnPointId;
 	Pokeio.EncounterPokemon(pokemon, function (suc, dat) {
 		console.log('Encountering pokemon ' + pokemonName + '...');
 
@@ -12,6 +11,8 @@ function catchPokemon(Pokeio, pokemon, pokemonName) {
 			if(xdat) {
 				console.log(status[xdat.Status]);
 			} else {
+				console.log(xdat);
+				console.log(xsuc);
 				console.log('Catch status unknown!');
 			}
 			console.log('Encounter completed!');
