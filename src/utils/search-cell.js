@@ -14,18 +14,17 @@ function searchCell(Pokeio, cell, delayTime) {
 	});
 
 	// Get object from pokestop (use async lib to iterate should be better)
-	//for (var j = hb.cells[i].Fort.length - 1; j >= 0; j--) {   // You should check if it is near enough to use!!
-	//	var fort = hb.cells[i].Fort[j];
-	//	if (fort.FortType == 1 && fort.Enabled) {   // 1 = PokeStop
-	//		// 0 = GYM
-	//		Pokeio.GetFort(fort.FortId, fort.Latitude, fort.Longitude, function (err, fortresponse) {
-	//			if (fortresponse.result == 1) {   // 1 = success
-	//				// 2 = out of range ..
-	//				console.log(fort.FortId + " used!!");
-	//			}
-	//		});
-	//	}
-	//}
+	cell.Fort.map(currentFort => {
+		if (currentFort.FortType == 1 && currentFort.Enabled) {
+			Pokeio.GetFort(currentFort.FortId, currentFort.Latitude, currentFort.Longitude, function (err, fortresponse) {
+				if (fortresponse.result == 1) {   // 1 = success
+					console.log('');
+					console.log('[+] There is a PokeStop nearby...');
+					console.log(`PokeStop ${currentFort.FortId} used and ${fortresponse.items_awarded.length} item awarded!!`);
+				}
+			});
+		}
+	});
 
 }
 
