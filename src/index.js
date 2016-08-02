@@ -3,24 +3,13 @@ const loginDetails = require('./utils/login-details');
 const PokemonGO = require('pokemon-go-node-api');
 const heartBeat = require('./utils/heart-beat.js');
 const locationUtil = require('./utils/location-util');
+const locations = require('./location').locations;
 
 // using var so you can login with multiple users
 const Pokeio = new PokemonGO.Pokeio();
 
-//Set environment variables or replace placeholder text
-const locationStartObject = locationUtil.getLocationObject(require('./location').locationStart);
-const locationEndObject = locationUtil.getLocationObject(require('./location').locationEnd);
-
-if (!locationUtil.isWalkableDistance(locationStartObject, locationEndObject)) {
-	return false;
-}
-
-const locationLatSteps = (locationStartObject.coords.latitude - locationEndObject.coords.latitude) / 60;
-const locationLongSteps = (locationStartObject.coords.longitude - locationEndObject.coords.longitude) / 60;
-console.log('locationLatSteps: ' + locationLatSteps);
-console.log('locationLongSteps: ' + locationLongSteps);
-
-const location = locationStartObject;
+let locationIndex = 0;
+const location = locationUtil.getLocationObject(locations[locationIndex++]);
 
 Pokeio.init(loginDetails.userName, loginDetails.password, location, loginDetails.provider, function (err) {
 	if (err) throw err;
@@ -47,10 +36,11 @@ Pokeio.init(loginDetails.userName, loginDetails.password, location, loginDetails
 
 		// start checking every minute in new location
 		setInterval(function () {
-			location.coords.latitude += locationLatSteps;
-			location.coords.longitude += locationLongSteps;
-			heartBeat.getHeartBeatForLocation(Pokeio, location);
-		}, 60000);
+			if(locations.length <= locationIndex) {
+				locationIndex = 0;
+			}
+			heartBeat.getHeartBeatForLocation(Pokeio, locationUtil.getLocationObject(locations[locationIndex++]));
+		}, 1000);
 
 	});
 });

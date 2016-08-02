@@ -10,6 +10,10 @@ function heartBeat(Pokeio) {
 		const currentTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 		console.log(`Waking up to Harvest at ${currentTime} ...`);
 		console.log('[i] Current location: ' + Pokeio.playerInfo.locationName);
+		if(!hb) {
+			console.log('hb is not available!');
+			return;
+		}
 		console.log('Nearby Pokemons: ');
 		//require('./utils/save-to-file.js').saveToFile(hb, `heart-beat.json`);
 		let delayTime = 5;

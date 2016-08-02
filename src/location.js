@@ -1,16 +1,22 @@
 const HOME = '212-216 Mona Vale Road, St Ives, NSW, 2075';
 
-const locationStart = {
-	locationString: "-33.73028242026735,151.16299152374268",
-	locationType: 'coords'
-};
+const locations = [
+	"-33.856214, 151.215291",
+	"-33.856882, 151.214465",
+	"-33.858575, 151.213414",
+	"-33.859680, 151.212835",
+	"-33.861275, 151.211590",
+	"-33.861159, 151.210152",
+	"-33.859707, 151.209476",
+	"-33.796608, 151.181570",
+	"-33.796851, 151.181731",
+];
 
 const locationEnd = {
-	locationString: "-33.73028242026735,151.16299152374268",
+	locationString: "-33.796608, 151.181570",
 	locationType: 'coords'
 };
 
 module.exports = {
-	locationStart,
-	locationEnd
+	locations
 };

@@ -1,21 +1,14 @@
 'use strict';
 
 const getLocationObject = (location) => {
-	//console.log('[i] Setting location to: ' + location.locationString);
-	if (location.locationType === 'coords') {
-		const locationArray = location.locationString.split(',');
-		return {
-			type: 'coords',
-			coords: {
-				latitude: parseFloat(locationArray[0].trim()),
-				longitude: parseFloat(locationArray[1].trim()),
-				altitude: 0
-			}
-		};
-	}
+	const locationArray = location.split(',');
 	return {
-		type: 'name',
-		name: location.locationString
+		type: 'coords',
+		coords: {
+			latitude: parseFloat(locationArray[0].trim()),
+			longitude: parseFloat(locationArray[1].trim()),
+			altitude: 0
+		}
 	};
 };
 
