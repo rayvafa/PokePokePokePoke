@@ -32,15 +32,15 @@ Pokeio.init(loginDetails.userName, loginDetails.password, location, loginDetails
 		console.log('[i] Pokecoin: ' + poke);
 		console.log('[i] Stardust: ' + profile.currency[1].amount);
 
-		heartBeat.getHeartBeatForLocation(Pokeio);
+		heartBeat.getHeartBeatForLocation(Pokeio, locationUtil.getLocationObject(locations[locationIndex++]), 5);
 
 		// start checking every minute in new location
 		setInterval(function () {
 			if(locations.length <= locationIndex) {
 				locationIndex = 0;
 			}
-			heartBeat.getHeartBeatForLocation(Pokeio, locationUtil.getLocationObject(locations[locationIndex++]));
-		}, 1000);
+			heartBeat.getHeartBeatForLocation(Pokeio, locationUtil.getLocationObject(locations[locationIndex++]), 5);
+		}, 60000);
 
 	});
 });

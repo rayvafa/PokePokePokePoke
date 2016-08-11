@@ -7,7 +7,7 @@ const getLocationObject = (location) => {
 		coords: {
 			latitude: parseFloat(locationArray[0].trim()),
 			longitude: parseFloat(locationArray[1].trim()),
-			altitude: 0
+			altitude: 1
 		}
 	};
 };

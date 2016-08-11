@@ -1,7 +1,7 @@
 'use strict';
 const searchCell = require('./search-cell.js');
 
-function heartBeat(Pokeio) {
+function heartBeat(Pokeio, delayTime) {
 	Pokeio.Heartbeat(function (err, hb) {
 		if (err) {
 			console.log(err);
@@ -15,24 +15,23 @@ function heartBeat(Pokeio) {
 			return;
 		}
 		console.log('Nearby Pokemons: ');
-		//require('./utils/save-to-file.js').saveToFile(hb, `heart-beat.json`);
-		let delayTime = 5;
+		//require('./save-to-file.js').saveToFile(hb, `heart-beat.json`);
 		hb.cells.map(cell => {
 			searchCell.searchCell(Pokeio, cell, delayTime);
 		});
 	});
 }
 
-function getHeartBeatForLocation(Pokeio, location) {
+function getHeartBeatForLocation(Pokeio, location, delayTime) {
 	console.log('');
 	console.log('----------------------------------------------------');
 	if (location) {
 		console.log(`Setting location to ${location.coords.latitude}, ${location.coords.longitude}`);
 		Pokeio.SetLocation(location, () => {
-			heartBeat(Pokeio);
+			heartBeat(Pokeio, delayTime);
 		})
 	} else {
-		heartBeat(Pokeio);
+		heartBeat(Pokeio, delayTime);
 	}
 }
 
